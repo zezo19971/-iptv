@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تطبيق The Goat - البث المباشر والأفلام والمسلسلات</title>
+    <!-- استيراد خط تجوال العربي الجذاب -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- أيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #4f46e5;
+            --accent-color: #f59e0b;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .alert-box {
+            background: rgba(245, 158, 11, 0.1);
+            border-right: 4px solid var(--accent-color);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+        }
+
+        .alert-box a {
+            color: var(--accent-color);
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            color: #38bdf8;
+            margin: 25px 0 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        ul, ol {
+            padding-right: 20px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+        }
+
+        a {
+            color: #38bdf8;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        a:hover {
+            color: #7dd3fc;
+            text-decoration: underline;
+        }
+
+        .devices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+            margin: 15px 0 25px;
+        }
+
+        .device-badge {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            text-align: center;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 600px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .price-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .price-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .price-card h3 {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .price-card .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .note-box {
+            background: rgba(56, 189, 248, 0.05);
+            border: 1px dashed var(--border-color);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features-list li {
+            position: relative;
+            padding-right: 25px;
+            margin-bottom: 10px;
+        }
+
+        .features-list li::before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            right: 0;
+            color: #10b981;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25d366;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 15px 0;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            text-decoration: none;
+        }
+
+        .btn-whatsapp:hover {
+            background: #20ba5a;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .social-links {
+            margin-top: 15px;
+        }
+
+        .footer-question {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin: 20px 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>أهلاً وسهلاً بك</h1>
+            <p>تطبيق The Goat الشامل للبث المباشر، القنوات، الأفلام والمسلسلات</p>
+        </div>
+
+        <div class="content">
+            <!-- الأجهزة المدعومة -->
+            <h2><i class="fa-solid fa-devices"></i> الأجهزة المدعومة</h2>
+            <p style="margin-bottom: 15px;">جميع الأجهزة يتوفر لها التطبيق:</p>
+            <div class="devices-grid">
+                <div class="device-badge">اندرويد</div>
+                <div class="device-badge">قوقل</div>
+                <div class="device-badge">أنظمة مغلقة</div>
+                <div class="device-badge">ايفون</div>
+                <div class="device-badge">فيـدا</div>
+                <div class="device-badge">سامسونج</div>
+                <div class="device-badge">ال جي</div>
+                <div class="device-badge">هايسينس</div>
+                <div class="device-badge">شاشات صيني</div>
+            </div>
+
+            <!-- تنبيه سرعة الإنترنت -->
+            <div class="alert-box">
+                <i class="fa-solid fa-triangle-exclamation"></i> <strong>ملاحظة هامة قبل البدء:</strong> 
+                يرجى أولاً قياس سرعة الإنترنت عندك من هذا الموقع: 
+                <a href="https://fast.com/ar/" target="_blank">fast.com</a> 
+                إذا كانت السرعة <strong>أقل من 10 ميغابت</strong> فلن يفيدك التطبيق وسيحدث تقطيع في البث.
+            </div>
+
+            <!-- طرق التنزيل -->
+            <h2><i class="fa-solid fa-download"></i> شلون تنزل التطبيق؟</h2>
+            <ol>
+                <li>
+                    <strong>هواتف الاندرويد:</strong> من سوق بلي مباشرة عبر الرابط التالي:<br>
+                    <a href="https://play.google.com/store/apps/details?id=com.zain.thegoat" target="_blank">
+                        <i class="fa-brands fa-google-play"></i> تحميل من سوق بلي
+                    </a>
+                </li>
+                <li>
+                    <strong>شاشات الاندرويد أو قوقل:</strong> من خلال كود الداونلودر التالي: <strong style="color: var(--accent-color); font-size: 1.2rem;">9272140</strong><br>
+                    <small style="color: var colspan; color: var(--text-muted);">قم بتنزيل تطبيق Downloader، ثم افتحه واكتب الكود أعلاه للتحميل والتثبيت التلقائي.</small>
+                </li>
+                <li>
+                    <strong>للايفون + الشاشات ذات الأنظمة المغلقة:</strong> (غير القابلة لتنزيل تطبيقات خارجية)، طبق خطوات الفيديو بدقة:<br>
+                    - رابط فيديو للايفون: <a href="https://youtube.com/shorts/jbrvx15hEhM?si=CgalfGeAZZn8Dkid" target="_blank">مشاهدة الشرح</a><br>
+                    - رابط فيديو للشاشات ذات النظام المغلق: <a href="https://youtu.be/vmctLJnZ09o?si=-X5xxDLJ-hatDHSr" target="_blank">مشاهدة الشرح</a>
+                </li>
+            </ol>
+
+            <!-- تفاصيل الأجهزة والكود -->
+            <div class="note-box">
+                <i class="fa-solid fa-circle-info"></i> <strong>ملاحظة حول الأجهزة:</strong> 
+                الكود الذي تأخذه مني (سواء كان تجريبياً أو شهرياً) يعمل على <strong>3 أجهزة بنفس الوقت</strong>. يقوم النظام بحفظ أحدث 3 أجهزة قامت بتسجيل الدخول، بحيث إذا سجلت الدخول بـ 3 أجهزة وقمت بالتسجيل في جهاز رابع، سيتم تسجيل الخروج من الجهاز الأول تلقائياً وهكذا.
+            </div>
+
+            <!-- الأسعار والباقات -->
+            <h2><i class="fa-solid fa-tags"></i> الباقات والأسعار</h2>
+            <p style="margin-bottom: 15px; text-align: center; color: var(--text-muted);">الاشتراكات المتوفرة: <strong>شهر واحد</strong> + <strong>تجريبي 24 ساعة</strong> قبل الاشتراك عند الرغبة.</p>
+            
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3>الباقة الماسية</h3>
+                    <div class="price">5000 دينار <span style="font-size:0.9rem; font-weight:normal;">/ شهرياً</span></div>
+                    <p style="font-size: 0.95rem; color: var(--text-muted);">شاملة لكل محتوى التطبيق من قنوات، أفلام، مسلسلات، والمباريات المهمة.</p>
+                </div>
+                <div class="price-card">
+                    <h3>الباقة العادية</h3>
+                    <div class="price">2000 دينار <span style="font-size:0.9rem; font-weight:normal;">/ شهرياً</span></div>
+                    <p style="font-size: 0.95rem; color: var(--text-muted);">مخصصة للأفلام، المسلسلات، وبعض القنوات المجانية فقط.</p>
+                </div>
+            </div>
+
+            <!-- مميزات إضافية -->
+            <h2><i class="fa-solid fa-star"></i> مميزات حصرية في التطبيق</h2>
+            <ul class="features-list">
+                <li><strong>ميزة التوقعات والجوائز:</strong> في الأول من كل شهر يتم اختيار الثلاثة الأوائل وتصفير النقاط للجميع:
+                    <br>🥇 الأول: تمديد 15 يوم
+                    <br>🥈 الثاني: تمديد 10 أيام
+                    <br>🥉 الثالث: تمديد 5 أيام
+                </li>
+                <li><strong>خيار "مباريات مهمة":</strong> يعمل مثل خط طوارئ أثناء المباريات المهمة التي يكثر عليها الطلب وتعاني من التقطيع بسبب الضغط (اللود)، حيث يدخل المشترك لتتفرج بدون تقطيع نهائياً.</li>
+            </ul>
+
+            <!-- التواصل وقنوات المتابعة -->
+            <div class="cta-section">
+                <p class="footer-question">بعد ما وصلت إلى هنا، هل تريد كود تجريبي 24 ساعة؟ أم تريد اشتراك شهر كامل؟</p>
+                <p style="margin-bottom: 15px; color: var(--text-muted);">تواصل معي فوراً عبر الواتساب لاختيار باقتك:</p>
+                
+                <a href="https://wa.me/+9647844799938" class="btn-whatsapp" target="_blank">
+                    <i class="fa-brands fa-whatsapp fa-xl"></i> تواصل عبر الواتساب
+                </a>
+
+                <div class="social-links" style="margin-top: 20px;">
+                    <a href="https://www.facebook.com/share/g/1CbjQXUTkv/" target="_blank">
+                        <i class="fa-brands fa-facebook"></i> انضم لمجموعة الفيسبوك للتبليغات والتحديثات
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
