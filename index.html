@@ -13,6 +13,8 @@
             --primary-color: #6366f1;
             --secondary-color: #4f46e5;
             --accent-color: #f59e0b;
+            --gold-color: #fbbf24;
+            --diamond-color: #38bdf8;
             --bg-color: #0f172a;
             --card-bg: #1e293b;
             --text-color: #f8fafc;
@@ -35,7 +37,7 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 860px;
             margin: 0 auto;
             background: var(--card-bg);
             border-radius: 20px;
@@ -129,24 +131,27 @@
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
             margin: 20px 0;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             .pricing-grid {
                 grid-template-columns: 1fr;
             }
         }
 
         .price-card {
-            background: rgba(15, 23, 42, 0.6);
+            background: rgba(15, 23, 42, 0.65);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 14px;
             padding: 20px;
             text-align: center;
-            transition: transform 0.3s;
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .price-card:hover {
@@ -154,16 +159,55 @@
             border-color: var(--primary-color);
         }
 
+        .price-card.regular h3 {
+            color: #94a3b8;
+        }
+
+        .price-card.gold {
+            border-color: rgba(245, 158, 11, 0.45);
+        }
+
+        .price-card.gold h3 {
+            color: var(--gold-color);
+        }
+
+        .price-card.diamond {
+            border-color: rgba(56, 189, 248, 0.55);
+        }
+
+        .price-card.diamond h3 {
+            color: var(--diamond-color);
+        }
+
         .price-card h3 {
-            color: var(--accent-color);
             font-size: 1.3rem;
             margin-bottom: 10px;
+            font-weight: 800;
         }
 
         .price-card .price {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
+            font-size: 1.55rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .price-card .desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .price-card .perks {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: right;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        .price-card .perks li {
+            margin-bottom: 6px;
         }
 
         .note-box {
@@ -279,7 +323,7 @@
                 </li>
                 <li>
                     <strong>شاشات الاندرويد أو قوقل:</strong> من خلال كود الداونلودر التالي: <strong style="color: var(--accent-color); font-size: 1.2rem;">6613937</strong><br>
-                    <small style="color: var colspan; color: var(--text-muted);">قم بتنزيل تطبيق Downloader، ثم افتحه واكتب الكود أعلاه للتحميل والتثبيت التلقائي.</small>
+                    <small style="color: var(--text-muted);">قم بتنزيل تطبيق Downloader، ثم افتحه واكتب الكود أعلاه للتحميل والتثبيت التلقائي.</small>
                 </li>
                 <li>
                     <strong>للايفون + الشاشات ذات الأنظمة المغلقة:</strong> (غير القابلة لتنزيل تطبيقات خارجية)، طبق خطوات الفيديو بدقة:<br>
@@ -299,15 +343,43 @@
             <p style="margin-bottom: 15px; text-align: center; color: var(--text-muted);">الاشتراكات المتوفرة: <strong>شهر واحد</strong> + <strong>تجريبي 24 ساعة</strong> قبل الاشتراك عند الرغبة.</p>
             
             <div class="pricing-grid">
-                <div class="price-card">
-                    <h3>الباقة الماسية</h3>
-                    <div class="price">5000 دينار <span style="font-size:0.9rem; font-weight:normal;">/ شهرياً</span></div>
-                    <p style="font-size: 0.95rem; color: var(--text-muted);">شاملة لكل محتوى التطبيق من قنوات، أفلام، مسلسلات، والمباريات المهمة.</p>
+                <div class="price-card regular">
+                    <div>
+                        <h3>الباقة العادية</h3>
+                        <div class="price">2000 دينار <span style="font-size:0.9rem; font-weight:normal;">/ شهرياً</span></div>
+                        <p class="desc">مناسبة للأفلام، المسلسلات، والقنوات المجانية.</p>
+                    </div>
+                    <ul class="perks">
+                        <li>✔ الأفلام والمسلسلات</li>
+                        <li>✔ القنوات المجانية</li>
+                        <li>✔ التوقعات والجوائز</li>
+                    </ul>
                 </div>
-                <div class="price-card">
-                    <h3>الباقة العادية</h3>
-                    <div class="price">2000 دينار <span style="font-size:0.9rem; font-weight:normal;">/ شهرياً</span></div>
-                    <p style="font-size: 0.95rem; color: var(--text-muted);">مخصصة للأفلام، المسلسلات، وبعض القنوات المجانية فقط.</p>
+
+                <div class="price-card gold">
+                    <div>
+                        <h3>الباقة الذهبية</h3>
+                        <div class="price">5000 دينار <span style="font-size:0.9rem; font-weight:normal;">/ شهرياً</span></div>
+                        <p class="desc">تشمل مزايا العادية بالإضافة إلى القنوات المشفرة.</p>
+                    </div>
+                    <ul class="perks">
+                        <li>✔ كل مزايا الباقة العادية</li>
+                        <li>✔ القنوات المشفرة</li>
+                        <li>✔ التوقعات والجوائز</li>
+                    </ul>
+                </div>
+
+                <div class="price-card diamond">
+                    <div>
+                        <h3>الباقة الماسية</h3>
+                        <div class="price">7000 دينار <span style="font-size:0.9rem; font-weight:normal;">/ شهرياً</span></div>
+                        <p class="desc">شاملة لكل محتوى التطبيق والمباريات المهمة الحصرية.</p>
+                    </div>
+                    <ul class="perks">
+                        <li>✔ كل مزايا الباقة الذهبية</li>
+                        <li>✔ بث المباريات المهمة</li>
+                        <li>✔ أولوية البث بدون تقطيع</li>
+                    </ul>
                 </div>
             </div>
 
@@ -319,7 +391,7 @@
                     <br>🥈 الثاني: تمديد 10 أيام
                     <br>🥉 الثالث: تمديد 5 أيام
                 </li>
-                <li><strong>خيار "مباريات مهمة":</strong> يعمل مثل خط طوارئ أثناء المباريات المهمة التي يكثر عليها الطلب وتعاني من التقطيع بسبب الضغط (اللود)، حيث يدخل المشترك لتتفرج بدون تقطيع نهائياً.</li>
+                <li><strong>خيار "مباريات مهمة" (للباقة الماسية):</strong> يعمل مثل خط طوارئ أثناء المباريات المهمة التي يكثر عليها الطلب وتعاني من التقطيع بسبب الضغط (اللود)، حيث يدخل مشترك الباقة الماسية ليتفرج بدون تقطيع نهائياً.</li>
             </ul>
 
             <!-- التواصل وقنوات المتابعة -->
